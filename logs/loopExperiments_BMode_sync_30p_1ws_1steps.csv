@@ -1,0 +1,222 @@
+2025-12-13 16:27:35.279473 Job submitted! latency-BMode-sync-30-1-1Parallelism 30, windowStep/Slide 1, Approach sync, Steps 1, Frequency 0
+ 
+2025-12-13 16:27:35.390320 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.465486 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.530846 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.581059 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.637401 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.710034 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.767919 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.825965 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.885936 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:35.948769 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.003599 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.062535 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.111627 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.148818 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.186515 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.224231 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.261979 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.298776 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.344805 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.393846 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.434324 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.472192 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.509011 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.547502 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.586695 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.626724 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.808996 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.856998 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.906495 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.952821 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:36.989652 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.026768 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.065414 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.103004 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.142573 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.182544 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.221786 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.258088 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.295393 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED', 'CREATED']
+
+2025-12-13 16:27:37.342847 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.470731 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.508860 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.545894 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.584681 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.628743 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.724805 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.772860 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.815057 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.853390 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.891629 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.929575 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:37.967347 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.007948 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.046449 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.083314 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.120971 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.158809 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.198270 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.237870 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.278087 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.319934 Job Status: 200, Vertices: ['CREATED', 'CREATED', 'CREATED', 'INITIALIZING', 'CREATED', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.362658 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.430840 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.472385 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.511947 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.557929 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.717188 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.761639 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.801383 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.838904 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.877356 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.915416 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.952105 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:38.990075 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.027789 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.066534 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.106039 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.142898 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.180777 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.218840 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.258566 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.295775 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.334369 Job Status: 200, Vertices: ['INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING', 'INITIALIZING']
+
+2025-12-13 16:27:39.380192 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.476179 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.525419 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.563319 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.704749 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.753387 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.791074 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.831127 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.867527 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.906657 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.943349 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:39.980619 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.020263 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.060998 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.098367 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.136589 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.175698 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.213055 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.254318 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.292028 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.331711 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.368172 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'INITIALIZING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.411273 Job Status: 200, Vertices: ['RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING', 'RUNNING']
+
+2025-12-13 16:27:40.411293 All vertices are RUNNING or FINISHED. Job is fully started or completed.
+
+2025-12-13 16:27:40.411302Job Status: 200, {"jid":"9f6b08fe701440cb20f72df910bff1bf","name":"Flink Graph Unified","isStoppable":false,"state":"RUNNING","job-type":"STREAMING","start-time":1765610854759,"end-time":-1,"duration":5646,"maxParallelism":-1,"now":1765610860405,"timestamps":{"CANCELED":0,"FAILING":0,"SUSPENDED":0,"RESTARTING":0,"RECONCILING":0,"RUNNING":1765610855141,"CANCELLING":0,"FINISHED":0,"INITIALIZING":1765610854759,"FAILED":0,"CREATED":1765610854883},"vertices":[{"id":"cbc357ccb763df2852fee8c4fc7d55f2","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Source: Graph Source -> Map -> Flat Map -> Assign Watermarks","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855649,"end-time":-1,"duration":4756,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":0,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":20592,"accumulated-busy-time":7628.0}},{"id":"4081cf0163fcce7fe6af0cf07ad2d43c","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Source: Message Source -> (Filter PartitionsToManager Status, Deserialize MessageBlocks -> Filter MessageBlocks)","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855701,"end-time":-1,"duration":4704,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":0,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":18513,"accumulated-busy-time":9964.0}},{"id":"d98230d181c70a29dad07bd1b457051f","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Create Nodes (Window)","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855717,"end-time":-1,"duration":4688,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":3600,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":8795,"accumulated-busy-time":19713.0}},{"id":"a64d089891579f51fca3203059a3ceb5","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"EventTimeSessionWindows","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855749,"end-time":-1,"duration":4656,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":3600,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":9039,"accumulated-busy-time":19218.0}},{"id":"2bb583622f7145f669f346a57cd97825","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Keyed Manager","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855782,"end-time":-1,"duration":4623,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":3720,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":1849,"accumulated-busy-time":13855.0}},{"id":"af5c6fedf276cb541ae2c616247d5681","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Graph Process -> Process -> (BlockMessage Sink: Writer -> BlockMessage Sink: Committer, Map -> Output Sink: Writer -> Output Sink: Committer, Map)","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855819,"end-time":-1,"duration":4586,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":5640,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":4056,"accumulated-busy-time":4739.0}},{"id":"c0c5397f8eb6ee00792fd1a0deea62ed","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Latency Sink: Writer","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855869,"end-time":-1,"duration":4536,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":120,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":4910,"accumulated-busy-time":7267.0}},{"id":"17c8079f6125c2ef6e17071fe12dcd49","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Latency Sink: Committer","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855910,"end-time":-1,"duration":4495,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":120,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":9192,"accumulated-busy-time":18840.0}}],"status-counts":{"FINISHED":0,"RECONCILING":0,"RUNNING":8,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"plan":{"jid":"9f6b08fe701440cb20f72df910bff1bf","name":"Flink Graph Unified","type":"STREAMING","nodes":[{"id":"17c8079f6125c2ef6e17071fe12dcd49","parallelism":30,"operator":"","operator_strategy":"","description":"Latency Sink: Committer<br/>","inputs":[{"num":0,"id":"c0c5397f8eb6ee00792fd1a0deea62ed","ship_strategy":"FORWARD","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"c0c5397f8eb6ee00792fd1a0deea62ed","parallelism":30,"operator":"","operator_strategy":"","description":"Latency Sink: Writer<br/>","inputs":[{"num":0,"id":"af5c6fedf276cb541ae2c616247d5681","ship_strategy":"FORWARD","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"af5c6fedf276cb541ae2c616247d5681","parallelism":30,"operator":"","operator_strategy":"","description":"Graph Process<br/>+- Process<br/>   :- BlockMessage Sink: Writer<br/>   :  +- BlockMessage Sink: Committer<br/>   :- Map<br/>   :  +- Output Sink: Writer<br/>   :     +- Output Sink: Committer<br/>   +- Map<br/>","inputs":[{"num":0,"id":"2bb583622f7145f669f346a57cd97825","ship_strategy":"HASH","exchange":"pipelined_bounded"},{"num":1,"id":"4081cf0163fcce7fe6af0cf07ad2d43c","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"2bb583622f7145f669f346a57cd97825","parallelism":30,"operator":"","operator_strategy":"","description":"Keyed Manager<br/>","inputs":[{"num":0,"id":"a64d089891579f51fca3203059a3ceb5","ship_strategy":"FORWARD","exchange":"pipelined_bounded"},{"num":1,"id":"4081cf0163fcce7fe6af0cf07ad2d43c","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"a64d089891579f51fca3203059a3ceb5","parallelism":30,"operator":"","operator_strategy":"","description":"Window(EventTimeSessionWindows(50), EventTimeTrigger, ProcessWindowFunction$5)<br/>","inputs":[{"num":0,"id":"d98230d181c70a29dad07bd1b457051f","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"d98230d181c70a29dad07bd1b457051f","parallelism":30,"operator":"","operator_strategy":"","description":"Window(SlidingEventTimeWindows(1000, 1000), EventTimeTrigger, GraphProcessWindowFunction)<br/>","inputs":[{"num":0,"id":"cbc357ccb763df2852fee8c4fc7d55f2","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"cbc357ccb763df2852fee8c4fc7d55f2","parallelism":30,"operator":"","operator_strategy":"","description":"Source: Graph Source<br/>+- Map<br/>   +- Flat Map<br/>      +- Assign Watermarks<br/>","optimizer_properties":{}},{"id":"4081cf0163fcce7fe6af0cf07ad2d43c","parallelism":30,"operator":"","operator_strategy":"","description":"Source: Message Source<br/>:- Filter PartitionsToManager Status<br/>+- Deserialize MessageBlocks<br/>   +- Filter MessageBlocks<br/>","optimizer_properties":{}}]}}
+ 
+2025-12-13 16:32:01.329943Job Status: 200, {"jid":"9f6b08fe701440cb20f72df910bff1bf","name":"Flink Graph Unified","isStoppable":false,"state":"RUNNING","job-type":"STREAMING","start-time":1765610854759,"end-time":-1,"duration":266559,"maxParallelism":-1,"now":1765611121318,"timestamps":{"CANCELED":0,"FAILING":0,"SUSPENDED":0,"RESTARTING":0,"RECONCILING":0,"RUNNING":1765610855141,"CANCELLING":0,"FINISHED":0,"INITIALIZING":1765610854759,"FAILED":0,"CREATED":1765610854883},"vertices":[{"id":"cbc357ccb763df2852fee8c4fc7d55f2","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Source: Graph Source -> Map -> Flat Map -> Assign Watermarks","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855649,"end-time":-1,"duration":265669,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":0,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":51534,"accumulated-busy-time":7407.0}},{"id":"4081cf0163fcce7fe6af0cf07ad2d43c","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Source: Message Source -> (Filter PartitionsToManager Status, Deserialize MessageBlocks -> Filter MessageBlocks)","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855701,"end-time":-1,"duration":265617,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":0,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":49769,"accumulated-busy-time":10056.0}},{"id":"d98230d181c70a29dad07bd1b457051f","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Create Nodes (Window)","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855717,"end-time":-1,"duration":265601,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":3600,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":31955,"accumulated-busy-time":26936.0}},{"id":"a64d089891579f51fca3203059a3ceb5","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"EventTimeSessionWindows","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855749,"end-time":-1,"duration":265569,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":3600,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":32511,"accumulated-busy-time":26650.0}},{"id":"2bb583622f7145f669f346a57cd97825","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Keyed Manager","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855782,"end-time":-1,"duration":265536,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":3720,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":28782,"accumulated-busy-time":17791.0}},{"id":"af5c6fedf276cb541ae2c616247d5681","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Graph Process -> Process -> (BlockMessage Sink: Writer -> BlockMessage Sink: Committer, Map -> Output Sink: Writer -> Output Sink: Committer, Map)","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855819,"end-time":-1,"duration":265499,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":7200,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":32488,"accumulated-busy-time":7243.0}},{"id":"c0c5397f8eb6ee00792fd1a0deea62ed","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Latency Sink: Writer","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855869,"end-time":-1,"duration":265449,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":120,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":34747,"accumulated-busy-time":8410.0}},{"id":"17c8079f6125c2ef6e17071fe12dcd49","slotSharingGroupId":"fd28cdfc493ca1cb47b0bdc257bc17c6","name":"Latency Sink: Committer","maxParallelism":128,"parallelism":30,"status":"RUNNING","start-time":1765610855910,"end-time":-1,"duration":265408,"tasks":{"FINISHED":0,"RECONCILING":0,"RUNNING":30,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"metrics":{"read-bytes":120,"read-bytes-complete":true,"write-bytes":0,"write-bytes-complete":true,"read-records":0,"read-records-complete":true,"write-records":0,"write-records-complete":true,"accumulated-backpressured-time":0,"accumulated-idle-time":37800,"accumulated-busy-time":21146.0}}],"status-counts":{"FINISHED":0,"RECONCILING":0,"RUNNING":8,"FAILED":0,"INITIALIZING":0,"SCHEDULED":0,"CANCELING":0,"CREATED":0,"DEPLOYING":0,"CANCELED":0},"plan":{"jid":"9f6b08fe701440cb20f72df910bff1bf","name":"Flink Graph Unified","type":"STREAMING","nodes":[{"id":"17c8079f6125c2ef6e17071fe12dcd49","parallelism":30,"operator":"","operator_strategy":"","description":"Latency Sink: Committer<br/>","inputs":[{"num":0,"id":"c0c5397f8eb6ee00792fd1a0deea62ed","ship_strategy":"FORWARD","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"c0c5397f8eb6ee00792fd1a0deea62ed","parallelism":30,"operator":"","operator_strategy":"","description":"Latency Sink: Writer<br/>","inputs":[{"num":0,"id":"af5c6fedf276cb541ae2c616247d5681","ship_strategy":"FORWARD","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"af5c6fedf276cb541ae2c616247d5681","parallelism":30,"operator":"","operator_strategy":"","description":"Graph Process<br/>+- Process<br/>   :- BlockMessage Sink: Writer<br/>   :  +- BlockMessage Sink: Committer<br/>   :- Map<br/>   :  +- Output Sink: Writer<br/>   :     +- Output Sink: Committer<br/>   +- Map<br/>","inputs":[{"num":0,"id":"2bb583622f7145f669f346a57cd97825","ship_strategy":"HASH","exchange":"pipelined_bounded"},{"num":1,"id":"4081cf0163fcce7fe6af0cf07ad2d43c","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"2bb583622f7145f669f346a57cd97825","parallelism":30,"operator":"","operator_strategy":"","description":"Keyed Manager<br/>","inputs":[{"num":0,"id":"a64d089891579f51fca3203059a3ceb5","ship_strategy":"FORWARD","exchange":"pipelined_bounded"},{"num":1,"id":"4081cf0163fcce7fe6af0cf07ad2d43c","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"a64d089891579f51fca3203059a3ceb5","parallelism":30,"operator":"","operator_strategy":"","description":"Window(EventTimeSessionWindows(50), EventTimeTrigger, ProcessWindowFunction$5)<br/>","inputs":[{"num":0,"id":"d98230d181c70a29dad07bd1b457051f","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"d98230d181c70a29dad07bd1b457051f","parallelism":30,"operator":"","operator_strategy":"","description":"Window(SlidingEventTimeWindows(1000, 1000), EventTimeTrigger, GraphProcessWindowFunction)<br/>","inputs":[{"num":0,"id":"cbc357ccb763df2852fee8c4fc7d55f2","ship_strategy":"HASH","exchange":"pipelined_bounded"}],"optimizer_properties":{}},{"id":"cbc357ccb763df2852fee8c4fc7d55f2","parallelism":30,"operator":"","operator_strategy":"","description":"Source: Graph Source<br/>+- Map<br/>   +- Flat Map<br/>      +- Assign Watermarks<br/>","optimizer_properties":{}},{"id":"4081cf0163fcce7fe6af0cf07ad2d43c","parallelism":30,"operator":"","operator_strategy":"","description":"Source: Message Source<br/>:- Filter PartitionsToManager Status<br/>+- Deserialize MessageBlocks<br/>   +- Filter MessageBlocks<br/>","optimizer_properties":{}}]}}
+ 
+2025-12-13 16:32:01.454926Terminate Job Status: 202, {}
+ 

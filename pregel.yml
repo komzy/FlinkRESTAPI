@@ -1,0 +1,34 @@
+# This is a FlinkPregelMain Config File
+
+pregel:
+  kafka:
+    inputTopic: max-VMode-sync-30-15-10
+    outputTopic: output
+    latencyTopic: latency-VMode-sync-30-15-10                    #only for testing
+    kafkaBootStrapServers: 172.16.0.64:9092,172.16.0.81:9092
+    groupId: test_group
+    parallelism: 30
+
+  flink:
+    clusterMode: true
+    maxOutOfOderness: 0
+    idleness: 60 #should be greater or twice than windowSize
+    windowSize: 15
+    windowSlide: 15
+    windowOffset: 0
+    stateExpirationTimer: 50
+    sourceOffset: latest   #"earliest" or "latest
+
+  app:
+    approach: sync       #loop, async or sync
+    dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    maximumSuperStep: 10
+    mode: V-Mode # V-Mode or VB-Mode or B-Mode
+    userParseClass: StringParseJson # class name.
+    userComputeClass: MaxValueComputeFunction
+
+      # If you want to place it in a package other than the example.stream package, please write the package name first.
+      # Ex.)
+    #   "PackageName.ParseClassName"
+
+

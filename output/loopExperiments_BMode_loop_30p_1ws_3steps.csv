@@ -1,0 +1,10 @@
+parallelism,windowStep,approach,steps,expfrequency,vertexName,execDuration,readRecords,writeRecords,throughput
+30,1,loop,3,0, "Source: Graph Source -> Map -> Flat Map -> Assign Watermarks", 262346, 0, 0, 0.0
+30,1,loop,3,0, "Source: Collection Source", 3076, 0, 0, 0.0
+30,1,loop,3,0, "Create Nodes (Window)", 262314, 0, 0, 0.0
+30,1,loop,3,0, "Graph Process", 262288, 0, 0, 0.0
+30,1,loop,3,0, "Graph Process", 262226, 0, 0, 0.0
+30,1,loop,3,0, "Graph Process", 262173, 0, 0, 0.0
+30,1,loop,3,0, "Graph Process -> (Map -> Output Sink: Writer -> Output Sink: Committer- Map)", 262137, 0, 0, 0.0
+30,1,loop,3,0, "Latency Sink: Writer", 262092, 0, 0, 0.0
+30,1,loop,3,0, "Latency Sink: Committer", 262040, 0, 0, 0.0
