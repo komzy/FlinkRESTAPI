@@ -90,7 +90,33 @@ def getTaskManagerMetrics(base_url, task_managers):
         mydata = {'get': ['Status.JVM.Memory.Heap.Used','Status.JVM.Memory.Heap.Committed', 'Status.JVM.Memory.Heap.Max']}
         x = requests.get(url, params=mydata)
         metrics[tm] = x.json()
+
     return metrics
+
+
+def sum_heap_used(metrics):
+    total = 0
+
+    for instance_metrics in metrics.values():
+        for metric in instance_metrics:
+            if metric.get('id') == 'Status.JVM.Memory.Heap.Used':
+                total += int(metric.get('value', 0))
+
+    return total
+
+
+def avg_heap_used(metrics):
+    total = 0
+    count = 0
+
+    for instance_metrics in metrics.values():
+        for metric in instance_metrics:
+            if metric.get('id') == 'Status.JVM.Memory.Heap.Used':
+                total += int(metric.get('value', 0))
+                count += 1
+
+    return total / count if count > 0 else 0
+
 
 def openFile(filePathAndName):
     file = open(filePathAndName, 'a')

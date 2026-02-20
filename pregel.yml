@@ -2,9 +2,9 @@
 
 pregel:
   kafka:
-    inputTopic: max-VMode-sync-30-15-10
+    inputTopic: max-synth-VMode-async-30-5-30
     outputTopic: output
-    latencyTopic: latency-VMode-sync-30-15-10                    #only for testing
+    latencyTopic: latency-synth-VMode-async-30-5-30              #only for testing
     kafkaBootStrapServers: 172.16.0.64:9092,172.16.0.81:9092
     groupId: test_group
     parallelism: 30
@@ -12,17 +12,17 @@ pregel:
   flink:
     clusterMode: true
     maxOutOfOderness: 0
-    idleness: 60 #should be greater or twice than windowSize
-    windowSize: 15
-    windowSlide: 15
+    idleness: 1  #should be greater or twice than windowSize
+    windowSize: 5
+    windowSlide: 5
     windowOffset: 0
-    stateExpirationTimer: 50
+    stateExpirationTimer: 2
     sourceOffset: latest   #"earliest" or "latest
 
   app:
-    approach: sync       #loop, async or sync
+    approach: async       #loop, async or sync
     dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS"
-    maximumSuperStep: 10
+    maximumSuperStep: 30
     mode: V-Mode # V-Mode or VB-Mode or B-Mode
     userParseClass: StringParseJson # class name.
     userComputeClass: MaxValueComputeFunction

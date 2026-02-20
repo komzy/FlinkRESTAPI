@@ -69,19 +69,25 @@ def load_kafka_dataset(topic, bootstrap_servers, sendToKafkaJarPath):
     time.sleep(3)
 
 
-def load_kafka_dataset2(topic, bootstrap_servers, sendToKafkaJarPath):
+def load_kafka_dataset2(topic, bootstrap_servers, datasetFileName, generatorPath, generatorJarPath, rateLimiter):
     # Split host and remote path
-    parts = sendToKafkaJarPath.split(maxsplit=1)
+    parts = generatorPath.split(maxsplit=1)
     if len(parts) != 2:
         raise ValueError("sendToKafkaJarPath must be 'host remote_path'")
     host, remote_path = parts
+
+
+
+    # copy conf to kafka cluster
+    os.system("scp " + generatorJarPath + " " + "aaic-shk-kafka001:/home/ubuntu/kafka/kafka_2.12-2.4.0/SendGzipToKafka-1.0-jar-with-dependencies.jar")
 
     # Java command arguments
     java_args = [
         "java", "-jar",
         "-Dkafka.topic=" + topic,
         "-Dkafka.kafkaBootStrapServers=" + bootstrap_servers,
-        "-Dkafka.gzipFile=cnr-2000.jsonl.gz",
+        "-Dkafka.gzipFile=" + datasetFileName,
+        "-Dkafka.rateLimiter=" + str(rateLimiter),
         "SendGzipToKafka-1.0-jar-with-dependencies.jar"
     ]
 
