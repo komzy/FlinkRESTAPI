@@ -4,26 +4,32 @@ from kafkaUtils import *
 import ruamel.yaml
 import subprocess
 from throughputDaemon import *
-from recordsLagDaemon import *
+from memoryDaemon import *
 
 def main():
 
     bootStrapServers = "172.16.0.64:9092,172.16.0.81:9092"  #cluster
     # bootStrapServers = "localhost:9092"    #local
     latencyTopicPrefix = "latency-synth"
-    parallelism = [30]
+    parallelism = [20,10,1]
 
     idleness =  1
     windowSize = [5]
-    stateExpirationTimer = 2
+    stateExpirationTimer = 120
     sourceOffset = "latest" #"earliest" or "latest
 
-    approach = ["async"]  #loop, async or sync
-    maximumSuperStep = [30]
+    approach = ["async", "sync"]  #loop, async or sync
+    maximumSuperStep = [60, 30]
     mode = "V-Mode"
     userComputeClass = "MaxValueComputeFunction"
     topicPrefix = "max-synth"
-    rateLimiter = 34000
+    rateLimiter = 150000000
+
+    experimentFrequency = 1
+    executionTimeSeconds = 60 * 10
+    waitBetweenExecutionsSec = 20
+    deploymentTime = (3) * 60
+
 
     conf_file_home = "/home/komal/PycharmProjects/FlinkRESTAPI/pregel.yml"
     # conf_file_dest = "localhost:/Users/komalmariam/conf/pregel.yml"
@@ -37,11 +43,10 @@ def main():
     jarFilePath = "/home/komal/IdeaProjects/FlinkPregel/target/FlinkPregel-1.0.jar"
     generatorJarPath = "/home/komal/IdeaProjects/SendGzipToKafka/target/SendGzipToKafka-1.0-jar-with-dependencies.jar"
 
-    experimentFrequency = 1
-    executionTimeSeconds =  60 * 4
-    waitBetweenExecutionsSec = 20
 
-    outputbaseName = "Experiments"
+
+
+    outputbaseName = f"Experiments"
     latencyTopicListFile = "output/latency_topics.txt"
 
     yaml = ruamel.yaml.YAML()
@@ -71,10 +76,10 @@ def main():
                     deleteKafkaTopic("messages", bootStrapServers, kafkaBinaryPath)
                     deleteKafkaTopic("output", bootStrapServers, kafkaBinaryPath)
 
-                    createKafkaTopic(topic, 30, bootStrapServers, kafkaBinaryPath)
-                    createKafkaTopic(latencyTopic, 30, bootStrapServers, kafkaBinaryPath)
-                    createKafkaTopic("messages",30, bootStrapServers, kafkaBinaryPath)
-                    createKafkaTopic("output",30, bootStrapServers, kafkaBinaryPath)
+                    createKafkaTopic(topic, p, bootStrapServers, kafkaBinaryPath)
+                    createKafkaTopic(latencyTopic, p, bootStrapServers, kafkaBinaryPath)
+                    createKafkaTopic("messages",p, bootStrapServers, kafkaBinaryPath)
+                    createKafkaTopic("output",p, bootStrapServers, kafkaBinaryPath)
 
 
                     with open(latencyTopicListFile, "a") as topic_file:
@@ -84,6 +89,15 @@ def main():
                     conf['pregel']['kafka']['parallelism'] = p
                     conf['pregel']['kafka']['kafkaBootStrapServers'] = bootStrapServers
                     conf['pregel']['kafka']['latencyTopic'] = latencyTopic
+
+                    # if steps > 10:
+                    #     idleness = steps
+                    # elif steps == 10:
+                    #     idleness = 16
+                    # else:
+                    #     idleness = 13
+
+
                     conf['pregel']['flink']['idleness'] = idleness
                     conf['pregel']['flink']['windowSize'] = ws
                     conf['pregel']['flink']['windowSlide'] = ws
@@ -111,7 +125,8 @@ def main():
 
                     executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetweenExecutionsSec, p, ws, a, steps,
                                           base_url, jarFilePath, startCluster, stopCluster, outputFilePathAndName, logFilePathAndName,
-                                          genertorPath, bootStrapServers, topic, latencyTopic, idleness, stateExpirationTimer, rateLimiter, generatorJarPath)
+                                          genertorPath, bootStrapServers, topic, latencyTopic, idleness, stateExpirationTimer,
+                                          rateLimiter, generatorJarPath, deploymentTime)
 
                     # consumeLatencyTopic(latencyTopic,bootStrapServers,latencyFilePathAndName, a, p, ws, steps, experimentFrequency, mode)
 
@@ -121,7 +136,7 @@ def main():
 def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetweenExecutionsSec, parallelism,
                           windowStep, approach, steps, base_url, jarFilePath, startCluster, stopCluster,
                           outputFilePathAndName, logFilePathAndName, sendToKafkaJarPath, bootStrapServers, topic,
-                          latencyTopic, idleness, stateExpirationTimer, rateLimiter, generatorJarPath):
+                          latencyTopic, idleness, stateExpirationTimer, rateLimiter, generatorJarPath, deploymentTime):
 
 
 
@@ -196,10 +211,12 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
         print(str(datetime.now()) + " Job Status: " + str(y.status_code) + ", " + y.text)
         logFile.write(str(datetime.now()) + "Job Status: " + str(y.status_code) + ", " + y.text + "\n \n")
 
+        time.sleep(deploymentTime)
+
         # collect source stats by polling
         pollRestAPIThread = threading.Thread(target=poll_stats_change_daemon,
             args=(base_url, job_id, outputFilePathAndName,parallelism, windowStep,
-                  approach, steps, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer),daemon=True)
+                  approach, steps, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime),daemon=True)
 
         pollRestAPIThread.start()
 
@@ -241,7 +258,7 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
             exit(0)
         job_id = json.dumps(status.json()['jobid'], indent=4).replace('"', '')
 
-        time.sleep(90)
+        time.sleep(55)
         z = terminateJob(base_url, job_id)
         print("Finished calculating latencies for " + latencyTopic)
 

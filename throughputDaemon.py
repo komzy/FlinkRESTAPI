@@ -3,7 +3,8 @@ import json
 import time
 
 
-def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelism, windowStep, approach, steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer):
+def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelism, windowStep, approach, steps, expFrequency,
+                             sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime):
     print("polling source stats...")
 
     prevValues = [0,0]
@@ -16,7 +17,7 @@ def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelis
 
         while True:
              prevValues = read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
-                       steps, expFrequency,sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer)
+                       steps, expFrequency,sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer, deploymentTime)
              statsFile.flush()  # Ensure data is written immediately
              time.sleep(1)
 
@@ -24,7 +25,7 @@ def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelis
 
 
 def read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
-               steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer):
+               steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer, deploymentTime):
 
     response = getJobOverview(base_url, job_id)
     jsonTxt = json.loads(response.text)
@@ -37,6 +38,9 @@ def read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
     sourceVertex = vertices[0]
     sinkVertex = vertices[-3]
     idleness_ms = idleness * 1000
+    if approach == "loop":
+        idleness_ms = 0
+    deploymentTime_ms = deploymentTime * 1000
 
     # initialize variables
     inputDuration = 0
@@ -58,12 +62,12 @@ def read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
     if edges > prevEdges:
         inputDuration = execDurationSource - sourceDeploymentTime
         inRate = edges / (inputDuration / 1000) if inputDuration > 0 else 0
-        inputDurationIdle = inputDuration - idleness_ms
+        inputDurationIdle = inputDuration - idleness_ms - deploymentTime_ms
         minusidleInRate = edges / (inputDurationIdle / 1000) if inputDurationIdle > 0 else 0
 
     if nodes > prevNodes:
         outputDuration = execDurationSink - sinkDeploymentTime
-        outputDurationIdle = outputDuration - idleness_ms
+        outputDurationIdle = outputDuration - idleness_ms - deploymentTime_ms
         if approach == "async":
             outputDurationIdle = outputDurationIdle - ((stateExpirationTimer - 2)* 1000)
 
