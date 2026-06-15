@@ -12,7 +12,7 @@ def poll_memory_daemon(base_url, job_id, outputFilePathAndName, parallelism, win
     with open(outputFilePathAndName, "w") as statsFile:
         # Write header once
         statsFile.write(
-            "parallelism,windowStep,approach,steps,expfrequency,idleness,edges,inputDuration,nodes,"
+            "parallelism,{wSlide,wSize},approach,steps,expfrequency,idleness,edges,inputDuration,nodes,"
             "outputDuration,TotalJVMHeap,AvgJVMHeap,sourceBackPressure,sinkBackPressure,sourceBusyTime,sinkBusyTime""\n"
         )
 
@@ -71,7 +71,8 @@ def memory_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
 
     row = (f"{parallelism},{windowStep},{approach},{steps},{expFrequency},"
            f"{idleness},{edges},{inputDuration},{nodes},{outputDuration},"
-           f"{total_heap},{average_heap},{sourceBackPressure},{sinkBackPressure},{sourceBusyTime},{sinkBusyTime}")
+           f"{total_heap},{average_heap},{sourceBackPressure},"
+           f"{sinkBackPressure},{sourceBusyTime},{sinkBusyTime}")
 
     statsFile.write(row + "\n")
 
