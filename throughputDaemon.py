@@ -3,7 +3,7 @@ import json
 import time
 
 
-def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelism, windowStep, approach, steps, expFrequency,
+def poll_throughput_daemon(base_url, job_id, outputFilePathAndName, parallelism, wSlide,wSize, approach, steps, expFrequency,
                              sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime):
     print("polling source stats...")
 
@@ -12,11 +12,11 @@ def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelis
     with open(outputFilePathAndName, "w") as statsFile:
         # Write header once
         statsFile.write(
-            "parallelism,windowStep,approach,steps,expfrequency,idleness,edges,inputDuration,nodes,outputDuration,inRate,outRate,minusidleInRate,minusidleOutRate\n"
+            "parallelism,wSlide,wSize,approach,steps,expfrequency,idleness,edges,outputDuration,outRate,minusTimerOutRate\n"
         )
 
         while True:
-             prevValues = read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
+             prevValues = read_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
                        steps, expFrequency,sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer, deploymentTime)
              statsFile.flush()  # Ensure data is written immediately
              time.sleep(1)
@@ -24,7 +24,7 @@ def poll_stats_change_daemon(base_url, job_id, outputFilePathAndName, parallelis
 
 
 
-def read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
+def read_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
                steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer, deploymentTime):
 
     response = getJobOverview(base_url, job_id)
@@ -35,8 +35,8 @@ def read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
 
     vertices = jsonTxt.get("vertices", [])
 
-    sourceVertex = vertices[0]
-    sinkVertex = vertices[-3]
+    sourceVertex = vertices[1]
+    sinkVertex = vertices[-1]
     idleness_ms = idleness * 1000
     if approach == "loop":
         idleness_ms = 0
@@ -56,27 +56,21 @@ def read_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
     execDurationSink = int(sinkVertex.get("duration", 0))
     nodes = int(sinkVertex.get("metrics", {}).get("write-records", 0))
 
-    if edges <= prevEdges and  nodes <= prevNodes:
+    if edges <= prevEdges and nodes <= prevNodes:
         return prevValues
 
-    if edges > prevEdges:
-        inputDuration = execDurationSource - sourceDeploymentTime
-        inRate = edges / (inputDuration / 1000) if inputDuration > 0 else 0
-        inputDurationIdle = inputDuration - idleness_ms - deploymentTime_ms
-        minusidleInRate = edges / (inputDurationIdle / 1000) if inputDurationIdle > 0 else 0
-
     if nodes > prevNodes:
-        outputDuration = execDurationSink - sinkDeploymentTime
-        outputDurationIdle = outputDuration - idleness_ms - deploymentTime_ms
-        if approach == "async":
-            outputDurationIdle = outputDurationIdle - ((stateExpirationTimer - 2)* 1000)
+        outputDuration = execDurationSink - sinkDeploymentTime - deploymentTime_ms         #time until sink status turns to running
+        outputDurationIdle = outputDuration - (stateExpirationTime * 1000); #subtract waittime and state expiration time
+        if approach == "flinkWin":
+            outputDurationIdle = outputDurationIdle - idleness_ms
 
         outRate = edges / (outputDuration / 1000) if outputDuration > 0 else 0
         minusidleOutRate = edges / (outputDurationIdle / 1000) if outputDurationIdle > 0 else 0
 
-    row = (f"{parallelism},{windowStep},{approach},{steps},{expFrequency},"
-           f"{idleness},{edges},{inputDuration},{nodes},{outputDuration},"
-           f"{inRate},{outRate},{minusidleInRate},{minusidleOutRate}")
+    row = (f"{parallelism},{wSlide},{wSize},{approach},{expFrequency},"
+           f"{idleness},{edges},{outputDuration},"
+           f"{outRate},{minusidleOutRate}")
 
     statsFile.write(row + "\n")
 

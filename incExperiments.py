@@ -153,7 +153,7 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
             # Extract vertex list
             vertices = y.json().get('vertices', [])
 
-            sourceDeploymentTime = vertices[0].get("duration",0)
+            sourceDeploymentTime = vertices[1].get("duration",0)
             sinkDeploymentTime = vertices[-3].get("duration", 0)
 
             # Get the states for all vertices
@@ -171,20 +171,29 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
         print(str(datetime.now()) + " Job Status: " + str(y.status_code) + ", " + y.text)
         logFile.write(str(datetime.now()) + "Job Status: " + str(y.status_code) + ", " + y.text + "\n \n")
 
-        time.sleep(deploymentTime)
+        time.sleep(deploymentTime)     #wait until pipeline turns blue
+
+        steps = "var"
 
         # collect source stats by polling
-        pollRestAPIThread = threading.Thread(target=poll_stats_change_daemon,
-            args=(base_url, job_id, outputFilePathAndName,parallelism, {f"{wSlide},{wSize}"},
+        pollThroughputThread = threading.Thread(target=poll_throughput_daemon,
+            args=(base_url, job_id, outputFilePathAndName,parallelism, wSlide,wSize,
                   approach, steps, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime),daemon=True)
 
-        pollRestAPIThread.start()
+        pollThroughputThread.start()
 
         pollMemoryThread = threading.Thread(target=poll_memory_daemon,
-            args=(base_url, job_id, outputFilePathAndName,parallelism, {f"{wSlide},{wSize}"},
-                  approach, steps, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer),daemon=True)
+            args=(base_url, job_id, outputFilePathAndName,parallelism, wSlide,wSize,
+                  approach, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer),daemon=True)
 
         pollMemoryThread.start()
+
+        pollVerticesThread = threading.Thread(target=poll_vertices_daemon,
+            args=(base_url, job_id, outputFilePathAndName,parallelism, wSlide,wSize,
+                  approach, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer),daemon=True)
+
+        pollVerticesThread.start()
+
 
         # Load kafka dataset
         load_kafka_dataset2(topic, bootStrapServers, "Synthetic_w263_e60_p100.jsonl.gz", sendToKafkaJarPath, generatorJarPath, rateLimiter)

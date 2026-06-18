@@ -3,7 +3,7 @@ import json
 import time
 
 
-def poll_memory_daemon(base_url, job_id, outputFilePathAndName, parallelism, windowStep, approach, steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer):
+def poll_memory_daemon(base_url, job_id, outputFilePathAndName, parallelism, wSlide,wSize, approach, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer):
     print("polling source memory stats...")
 
     prevValues = [0,0]
@@ -12,12 +12,12 @@ def poll_memory_daemon(base_url, job_id, outputFilePathAndName, parallelism, win
     with open(outputFilePathAndName, "w") as statsFile:
         # Write header once
         statsFile.write(
-            "parallelism,{wSlide,wSize},approach,steps,expfrequency,idleness,edges,inputDuration,nodes,"
+            "parallelism,wSlide,wSize,approach,steps,expfrequency,idleness,edges,inputDuration,nodes,"
             "outputDuration,TotalJVMHeap,AvgJVMHeap,sourceBackPressure,sinkBackPressure,sourceBusyTime,sinkBusyTime""\n"
         )
 
         while True:
-             prevValues = memory_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
+             prevValues = memory_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
                        steps, expFrequency,sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer)
              statsFile.flush()  # Ensure data is written immediately
              time.sleep(1)
@@ -25,8 +25,8 @@ def poll_memory_daemon(base_url, job_id, outputFilePathAndName, parallelism, win
 
 
 
-def memory_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
-               steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer):
+def memory_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
+               expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer):
 
     response = getJobOverview(base_url, job_id)
     jsonTxt = json.loads(response.text)
@@ -36,7 +36,7 @@ def memory_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
 
     vertices = jsonTxt.get("vertices", [])
 
-    sourceVertex = vertices[0]
+    sourceVertex = vertices[1]
     sinkVertex = vertices[-3]
 
     # initialize variables
@@ -69,7 +69,7 @@ def memory_stats(statsFile, base_url, job_id, parallelism, windowStep, approach,
     total_heap = sum_heap_used(metrics)
     average_heap = avg_heap_used(metrics)
 
-    row = (f"{parallelism},{windowStep},{approach},{steps},{expFrequency},"
+    row = (f"{parallelism},{wSlide},{wSize},{approach},{steps},{expFrequency},"
            f"{idleness},{edges},{inputDuration},{nodes},{outputDuration},"
            f"{total_heap},{average_heap},{sourceBackPressure},"
            f"{sinkBackPressure},{sourceBusyTime},{sinkBusyTime}")
