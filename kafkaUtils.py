@@ -30,23 +30,26 @@ def deleteKafkaTopic(topic, bootstrap_servers, kafkaBinaryPath):
     time.sleep(3)
 
 
-
-def load_kafka_dataset(topic, bootstrap_servers, sendToKafkaJarPath):
+def load_kafka_dataset_old(topic, bootstrap_servers, datasetFileName, generatorPath, generatorJarPath, rateLimiter):
     # Split host and remote path
-    parts = sendToKafkaJarPath.split(maxsplit=1)
+    parts = generatorPath.split(maxsplit=1)
     if len(parts) != 2:
         raise ValueError("sendToKafkaJarPath must be 'host remote_path'")
     host, remote_path = parts
+
+
+
+    # copy conf to kafka cluster
+    os.system("scp " + generatorJarPath + " " + "aaic-shk-kafka001:/home/ubuntu/kafka/kafka_2.12-2.4.0/SendGzipToKafka-1.0-jar-with-dependencies.jar")
 
     # Java command arguments
     java_args = [
         "java", "-jar",
         "-Dkafka.topic=" + topic,
         "-Dkafka.kafkaBootStrapServers=" + bootstrap_servers,
-        "-Dkafka.dateFormat=yyyy-MM-dd'T'HH:mm:ss.SSS",
-        "-Dkafka.nodeFilePath=cnr-2000-nodes.txt",
-        "-Dkafka.scenarioFilePath=cnr-2000-edges.txt",
-        "SendToFlinkPregel-1.0-jar-with-dependencies.jar"
+        "-Dkafka.gzipFile=" + datasetFileName,
+        "-Dkafka.rateLimiter=" + str(rateLimiter),
+        "SendGzipToKafka-1.0-jar-with-dependencies.jar"
     ]
 
     # Join Java command safely for SSH
@@ -69,27 +72,36 @@ def load_kafka_dataset(topic, bootstrap_servers, sendToKafkaJarPath):
     time.sleep(3)
 
 
-def load_kafka_dataset2(topic, bootstrap_servers, datasetFileName, generatorPath, generatorJarPath, rateLimiter):
-    # Split host and remote path
-    parts = generatorPath.split(maxsplit=1)
-    if len(parts) != 2:
-        raise ValueError("sendToKafkaJarPath must be 'host remote_path'")
-    host, remote_path = parts
+def load_kafka_data(topic,bootstrap_servers,generatorClusterPath, generatorConf_home, generatorConf_dest, genFilePrefix, rateLimiter):
+    yaml = ruamel.yaml.YAML()
+    yaml.preserve_quotes = True
+    yaml.width = 1000096  # do not wrap long lines in yml file
 
+    with open(generatorConf_home, 'r') as file:
+        conf = yaml.load(file)
+    print("parameters_generator.yml loaded successfully")
 
+    conf['parameters']['kafkaBootStrapServers'] = bootstrap_servers
+    conf['parameters']['topic'] = topic
+    conf['parameters']['rateLimiter'] = rateLimiter
+    conf['parameters']['nodeFilePath'] = genFilePrefix + "-nodes.txt"
+    conf['parameters']['scenarioFilePath'] = genFilePrefix + "-edges.txt"
 
-    # copy conf to kafka cluster
-    os.system("scp " + generatorJarPath + " " + "aaic-shk-kafka001:/home/ubuntu/kafka/kafka_2.12-2.4.0/SendGzipToKafka-1.0-jar-with-dependencies.jar")
+    with open(generatorConf_home, 'w') as file:
+        yaml.dump(conf, file)
+
+    # copy conf to cluster
+    subprocess.run(["scp", generatorConf_home, generatorConf_dest],check=True)
+
+    host, full_path = generatorClusterPath.split(":", 1)
+    remote_path, jarName = full_path.rsplit("/", 1)
+
+    print(host)
+    print(remote_path)
+    print(jarName)
 
     # Java command arguments
-    java_args = [
-        "java", "-jar",
-        "-Dkafka.topic=" + topic,
-        "-Dkafka.kafkaBootStrapServers=" + bootstrap_servers,
-        "-Dkafka.gzipFile=" + datasetFileName,
-        "-Dkafka.rateLimiter=" + str(rateLimiter),
-        "SendGzipToKafka-1.0-jar-with-dependencies.jar"
-    ]
+    java_args = ["java", "-jar",jarName]
 
     # Join Java command safely for SSH
     java_cmd = " ".join(shlex.quote(arg) for arg in java_args)

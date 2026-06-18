@@ -1,0 +1,9 @@
+parameters:
+  "dateFormat": "yyyy-MM-dd'T'HH:mm:ss.SSS"
+  "nodeFilePath": "Synthetic_Layer_w263_e60_p100-nodes.txt"
+  "scenarioFilePath": "Synthetic_Layer_w263_e60_p100-edges.txt"
+  "outputFileName": "Synthetic_Layers"
+  "kafkaWrite": true
+  "topic": "synth"
+  "kafkaBootStrapServers": "localhost:9092"
+  "rateLimiter": 100000000.0

@@ -29,12 +29,15 @@ def main():
     #Experiment parameters
     experimentFrequency = 1
     executionTimeSeconds = 60 * 10
-    waitBetweenExecutionsSec = 20
+    waitBetweenExecutionsSec = 10
     deploymentTime = (3) * 60  #pause between flink pipeline deployment and input data generation
 
     #paths
     conf_file_home = "/home/komal/PycharmProjects/FlinkRESTAPI/parameters.yml" #path your system
     conf_file_dest = "aaic-shk-flink001:/home/ubuntu/conf/parameters.yml" #path on cluster
+
+    generatorConf_home = "/home/komal/PycharmProjects/FlinkRESTAPI/parameters_generator.yml" #path your system
+    generatorConf_dest = "aaic-shk-flink001:/home/ubuntu/conf/parameters.yml" #path on cluster
 
 
     flinkBinaryPath = "aaic-shk-flink001 /mnt/flink/flinkBinaries/flink-1.20.2/"
@@ -52,7 +55,7 @@ def main():
     startCluster = "ssh " + flinkBinaryPath + "bin/start-cluster.sh"
 
     subprocess.Popen(stopCluster, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-    time.sleep(20)  # wait before starting cluster again
+    time.sleep(10)  # wait before starting cluster again
 
     for p in parallelism:
         for wSize in windowSize:
@@ -86,18 +89,11 @@ def main():
                     conf['parameters']['app']['query'] = query
                     conf['parameters']['app']['approach'] = a
 
-                    time.sleep(1)
-
                     with open(conf_file_home, 'w') as file:
                         yaml.dump(conf, file)
 
-                    time.sleep(1)
-
                     # copy conf to cluster
-                    os.system("scp " + conf_file_home + " " + conf_file_dest)
-                    time.sleep(2)
-
-
+                    subprocess.run(["scp", conf_file_home, conf_file_dest], check=True)
 
                     executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetweenExecutionsSec, p, wSize, wSlide, a,
                                           jarFilePath, startCluster,stopCluster, outputbaseName, genertorPath, bootStrapServers, topic, outputTopic,
@@ -126,8 +122,6 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
 
         uploadJar(base_url, jarFilePath)
         print("Flink job jar uploaded..")
-
-        time.sleep(3)
 
         x = getAllJars(base_url)
         jar_id = x.json()['files'][0]['id']
@@ -194,7 +188,6 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
 
         pollVerticesThread.start()
 
-
         # Load kafka dataset
         load_kafka_dataset2(topic, bootStrapServers, "Synthetic_w263_e60_p100.jsonl.gz", sendToKafkaJarPath, generatorJarPath, rateLimiter)
 
@@ -211,12 +204,10 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
         time.sleep(waitBetweenExecutionsSec)
         deleteJar(base_url, jar_id)
 
-
         print("Running calculateLatencies jar ...")
         uploadJar(base_url, "/home/komal/IdeaProjects/calculateLatency/target/calculateLateny-1.0.jar")
         x = getAllJars(base_url)
         jar_id = x.json()['files'][0]['id']
-        time.sleep(1)
         status = submitJob(base_url, jar_id, {"programArgs": f"{outputTopic} awso"})
 
         if status.status_code == 200:
@@ -227,17 +218,14 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
             exit(0)
         job_id = json.dumps(status.json()['jobid'], indent=4).replace('"', '')
 
-        time.sleep(55)
+        time.sleep(60)
         z = terminateJob(base_url, job_id)
         print("Finished calculating latencies for " + latencyTopic)
-
-        #wait at-least waittime seconds before starting next job
         print("waiting for cluster to stop ....")
-        time.sleep(20)
-
+        time.sleep(5)
         # stop cluster
         subprocess.Popen(stopCluster, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-        time.sleep(waitBetweenExecutionsSec)  # wait before starting cluster again
+        time.sleep(10)  # wait before starting cluster again
         #incrementing loop variable
         i += 1
 
