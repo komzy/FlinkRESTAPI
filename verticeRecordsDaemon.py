@@ -3,9 +3,10 @@ import json
 import time
 
 
-def poll_vertices_daemon(base_url, job_id, outputFilePathAndName, parallelism, wSlide,wSize, approach, steps, expFrequency,
-                             sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime):
-    print("Polling vertex statistics...")
+def poll_vertices_daemon(base_url, job_id, outputFilePathAndName):
+    print("polling vertex statistics...")
+
+    outputFilePathAndName = outputFilePathAndName.replace("throughput", "vertices")
 
     while True:
         write_vertex_stats(base_url, job_id, outputFilePathAndName)
@@ -23,9 +24,8 @@ def write_vertex_stats(base_url, job_id, outputFilePathAndName):
         statsFile.write("vertexName,read-records,write-records\n")
 
         for vertex in vertices:
-            name = vertex.get("name", "")
+            name = vertex.get("name", "").replace(",","")
             metrics = vertex.get("metrics", {})
-
             read_records = metrics.get("read-records", 0)
             write_records = metrics.get("write-records", 0)
 

@@ -5,48 +5,48 @@ import ruamel.yaml
 import subprocess
 from throughputDaemon import *
 from memoryDaemon import *
+from verticeRecordsDaemon import poll_vertices_daemon
+
 
 def main():
 
     #App (Flink Job) Configuration - parameters.yml
     bootStrapServers = "172.16.0.64:9092,172.16.0.81:9092"  #cluster
     # bootStrapServers = "localhost:9092"    #local
-    topicPrefix = "max"
-    outputTopicPrefix = "latency"
-    parallelism = [20,10,1]
+    topicPrefix = "testCC"
+    outputTopicPrefix = "testCCoutput"
+    parallelism = [30]
     idleness = 1
     windowSize = [5]
     windowSlide = [5]
-    stateExpirationTimer = 120
+    stateExpirationTimer = 21
     sourceOffset = "latest" #"earliest" or "latest
-    query = "MaxValueComputeFunction"
-    approach = ["naive", "inc"]
-
+    query = "CC"
+    approach = ["inc"]
 
     #Input Generator rate
-    rateLimiter = 150000000
+    rateLimiter = 150000000.0
 
     #Experiment parameters
     experimentFrequency = 1
-    executionTimeSeconds = 60 * 10
+    executionTimeSeconds = 60 * 1.5
     waitBetweenExecutionsSec = 10
-    deploymentTime = (3) * 60  #pause between flink pipeline deployment and input data generation
+    deploymentTime = 3  #pause between flink pipeline deployment and input data generation
 
     #paths
-    conf_file_home = "/home/komal/PycharmProjects/FlinkRESTAPI/parameters.yml" #path your system
+    conf_file_home = "/home/komal/PycharmProjects/FlinkRESTAPI/parameters_streamingGraph.yml" #path your system
     conf_file_dest = "aaic-shk-flink001:/home/ubuntu/conf/parameters.yml" #path on cluster
 
     generatorConf_home = "/home/komal/PycharmProjects/FlinkRESTAPI/parameters_generator.yml" #path your system
-    generatorConf_dest = "aaic-shk-flink001:/home/ubuntu/conf/parameters.yml" #path on cluster
+    generatorConf_dest = "aaic-shk-kafka001:/home/ubuntu/kafka/kafka_2.12-2.4.0/conf/parameters.yml" #path on cluster
 
 
     flinkBinaryPath = "aaic-shk-flink001 /mnt/flink/flinkBinaries/flink-1.20.2/"
     kafkaBinaryPath = "aaic-shk-kafka001 /home/ubuntu/kafka/kafka_2.12-2.4.0/"
-    genertorPath = "aaic-shk-kafka001 /home/ubuntu/kafka/kafka_2.12-2.4.0"  #generator jar on kafka cluster
-    jarFilePath = "/home/komal/IdeaProjects/FlinkPregel/target/FlinkPregel-1.0.jar" #flink job jar
-    generatorJarPath = "/home/komal/IdeaProjects/SendGzipToKafka/target/SendGzipToKafka-1.0-jar-with-dependencies.jar" #on your system
+    jarFilePath = "/home/komal/IdeaProjects/StreamingGraph/target/StreamingGraph-1.0.jar" #flink job jar on your system
+    generatorJarPath = "aaic-shk-kafka001:/home/ubuntu/kafka/kafka_2.12-2.4.0/SendGzipToKafka-1.0-jar-with-dependencies.jar" #generator jar on cluster
 
-    outputbaseName = f"Throughput"
+
 
     yaml = ruamel.yaml.YAML()
     yaml.preserve_quotes = True
@@ -65,8 +65,8 @@ def main():
                         conf = yaml.load(file)
                     print("yaml loaded successfully")
 
-                    topic = f"{topicPrefix}-{a}-{p}p-{wSize}wSize-{wSlide}wSlide"
-                    outputTopic = f"{outputTopicPrefix}-{a}-{p}p-{wSize}wSize-{wSlide}wSlide"
+                    topic = f"{topicPrefix}-{a}-{p}p-{wSize}wsz-{wSlide}wsl"
+                    outputTopic = f"{outputTopicPrefix}-{a}-{p}p-{wSize}wsz-{wSlide}wsl"
 
                     deleteKafkaTopic(topic, bootStrapServers, kafkaBinaryPath)
                     deleteKafkaTopic(outputTopic, bootStrapServers, kafkaBinaryPath)
@@ -80,7 +80,6 @@ def main():
                     conf['parameters']['kafka']['inputTopic'] = topic
                     conf['parameters']['kafka']['outputTopic'] = outputTopic
                     conf['parameters']['kafka']['parallelism'] = p
-
                     conf['parameters']['flink']['idleness'] = idleness
                     conf['parameters']['flink']['windowSize'] = wSize
                     conf['parameters']['flink']['windowSlide'] = wSlide
@@ -96,16 +95,16 @@ def main():
                     subprocess.run(["scp", conf_file_home, conf_file_dest], check=True)
 
                     executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetweenExecutionsSec, p, wSize, wSlide, a,
-                                          jarFilePath, startCluster,stopCluster, outputbaseName, genertorPath, bootStrapServers, topic, outputTopic,
-                                          idleness, stateExpirationTimer, rateLimiter, generatorJarPath, deploymentTime)
+                                          jarFilePath, startCluster,stopCluster, topicPrefix, bootStrapServers, topic, outputTopic,
+                                          idleness, stateExpirationTimer, rateLimiter, generatorJarPath, deploymentTime, generatorConf_home,generatorConf_dest)
 
 
 def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetweenExecutionsSec, parallelism,
-                          wSize, wSlide, approach, jarFilePath, startCluster,stopCluster, outputbaseName, sendToKafkaJarPath, bootStrapServers, topic,
-                          outputTopic, idleness, stateExpirationTimer, rateLimiter, generatorJarPath, deploymentTime):
+                          wSize, wSlide, approach, jarFilePath, startCluster,stopCluster, outputbaseName, bootStrapServers, topic,
+                          outputTopic, idleness, stateExpirationTimer, rateLimiter, generatorJarPath, deploymentTime, generatorConf_home,generatorConf_dest):
 
-    outputFilePathAndName = f"output/{outputbaseName}-{a}-{p}p-{wSize}wSize-{wSlide}wSlide.csv"
-    logFilePathAndName = f"logs/{outputbaseName}-{a}-{p}p-{wSize}wSize-{wSlide}wSlide.csv"
+    outputFilePathAndName = f"throughput/{outputbaseName}-{approach}-{parallelism}p-{wSize}wsz-{wSlide}wsl.csv"
+    logFilePathAndName = f"logs/{outputbaseName}-{approach}-{parallelism}p-{wSize}wsz-{wSlide}wsl.csv"
 
     base_url = "http://localhost:29999/"
 
@@ -117,7 +116,6 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
         # start cluster
         subprocess.Popen(startCluster, shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
         print("Cluster Started..")
-
         time.sleep(20)
 
         uploadJar(base_url, jarFilePath)
@@ -128,8 +126,8 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
 
         x = submitJob(base_url, jar_id, {})
         if x.status_code == 200:
-            status =f"{datetime.now()} Job submitted! {outputTopic} Parallelism: {parallelism} windowStep: {wSize} windowSlide: {wSlide}" \
-            f"Approach: {approach} Frequency: {i}";
+            status =f"{datetime.now()} Job submitted! {outputTopic} Parallelism: {parallelism} windowStep: {wSize} windowSlide: {wSlide} " \
+            f"Approach: {approach} Frequency: {i}"
             print(status)
             logFile.write(status + "\n \n")
         else:
@@ -148,7 +146,7 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
             vertices = y.json().get('vertices', [])
 
             sourceDeploymentTime = vertices[1].get("duration",0)
-            sinkDeploymentTime = vertices[-3].get("duration", 0)
+            sinkDeploymentTime = vertices[-1].get("duration", 0)
 
             # Get the states for all vertices
             vertex_states = [v.get('status') for v in vertices]
@@ -167,29 +165,27 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
 
         time.sleep(deploymentTime)     #wait until pipeline turns blue
 
-        steps = "var"
 
         # collect source stats by polling
         pollThroughputThread = threading.Thread(target=poll_throughput_daemon,
             args=(base_url, job_id, outputFilePathAndName,parallelism, wSlide,wSize,
-                  approach, steps, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime),daemon=True)
+                  approach, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime),daemon=True)
 
         pollThroughputThread.start()
 
         pollMemoryThread = threading.Thread(target=poll_memory_daemon,
             args=(base_url, job_id, outputFilePathAndName,parallelism, wSlide,wSize,
-                  approach, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer),daemon=True)
+                  approach, i,sourceDeploymentTime, sinkDeploymentTime, idleness),daemon=True)
 
         pollMemoryThread.start()
-
+        #
         pollVerticesThread = threading.Thread(target=poll_vertices_daemon,
-            args=(base_url, job_id, outputFilePathAndName,parallelism, wSlide,wSize,
-                  approach, i,sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer),daemon=True)
+            args=(base_url, job_id, outputFilePathAndName),daemon=True)
 
         pollVerticesThread.start()
 
         # Load kafka dataset
-        load_kafka_dataset2(topic, bootStrapServers, "Synthetic_w263_e60_p100.jsonl.gz", sendToKafkaJarPath, generatorJarPath, rateLimiter)
+        load_kafka_data(topic,bootStrapServers,generatorJarPath,generatorConf_home,generatorConf_dest,"bitcoinAlpha",rateLimiter)
 
         # Execute for executionTimeSeconds
         time.sleep(executionTimeSeconds)
@@ -205,10 +201,11 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
         deleteJar(base_url, jar_id)
 
         print("Running calculateLatencies jar ...")
+
         uploadJar(base_url, "/home/komal/IdeaProjects/calculateLatency/target/calculateLateny-1.0.jar")
         x = getAllJars(base_url)
         jar_id = x.json()['files'][0]['id']
-        status = submitJob(base_url, jar_id, {"programArgs": f"{outputTopic} awso"})
+        status = submitJob(base_url, jar_id, {"programArgs": f"{outputTopic}"})
 
         if status.status_code == 200:
             print(str(datetime.now()) + " Latencies Job submitted! ")
@@ -220,13 +217,13 @@ def executeAndSaveLatency(experimentFrequency, executionTimeSeconds, waitBetween
 
         time.sleep(60)
         z = terminateJob(base_url, job_id)
-        print("Finished calculating latencies for " + latencyTopic)
-        print("waiting for cluster to stop ....")
+        print("Finished calculating latencies for " + outputTopic)
         time.sleep(5)
         # stop cluster
+        print("waiting for cluster to stop ....")
         subprocess.Popen(stopCluster, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
         time.sleep(10)  # wait before starting cluster again
-        #incrementing loop variable
+        # #incrementing loop variable
         i += 1
 
     logFile.flush()

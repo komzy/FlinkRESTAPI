@@ -1,9 +1,0 @@
-parallelism,windowStep,approach,steps,expfrequency,vertexName,execDuration,readRecords,writeRecords,throughput
-30,15,sync,1,0, "Source: Graph Source -> Map -> Flat Map -> Assign Watermarks", 265468, 0, 0, 0.0
-30,15,sync,1,0, "Source: Message Source -> (Filter PartitionsToManager Status- Deserialize Messages -> Filter Messages)", 265434, 0, 0, 0.0
-30,15,sync,1,0, "Create Nodes (Window)", 265395, 0, 0, 0.0
-30,15,sync,1,0, "EventTimeSessionWindows", 265356, 0, 0, 0.0
-30,15,sync,1,0, "Keyed Manager", 265319, 0, 0, 0.0
-30,15,sync,1,0, "Graph Process -> Process -> (Message Sink: Writer -> Message Sink: Committer- Map -> Output Sink: Writer -> Output Sink: Committer- Map)", 265282, 0, 0, 0.0
-30,15,sync,1,0, "Latency Sink: Writer", 265255, 0, 0, 0.0
-30,15,sync,1,0, "Latency Sink: Committer", 265205, 0, 0, 0.0

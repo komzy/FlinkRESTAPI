@@ -3,35 +3,35 @@ import json
 import time
 
 
-def poll_throughput_daemon(base_url, job_id, outputFilePathAndName, parallelism, wSlide,wSize, approach, steps, expFrequency,
-                             sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTimer, deploymentTime):
+def poll_throughput_daemon(base_url, job_id, outputFilePathAndName, parallelism, wSlide,wSize, approach, expFrequency,
+                             sourceDeploymentTime, sinkDeploymentTime, idleness, stateExpirationTime, deploymentTime):
     print("polling source stats...")
 
-    prevValues = [0,0]
+    prevValues = [0,0, None]
 
     with open(outputFilePathAndName, "w") as statsFile:
         # Write header once
         statsFile.write(
-            "parallelism,wSlide,wSize,approach,steps,expfrequency,idleness,edges,outputDuration,outRate,minusTimerOutRate\n"
+            "parallelism,wSlide,wSize,approach,expfrequency,idleness,edges,outputDuration,outRate,rec\n"
         )
 
         while True:
              prevValues = read_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
-                       steps, expFrequency,sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer, deploymentTime)
+                        expFrequency,sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTime, deploymentTime)
              statsFile.flush()  # Ensure data is written immediately
-             time.sleep(1)
-
 
 
 
 def read_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
-               steps, expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues, stateExpirationTimer, deploymentTime):
+               expFrequency, sourceDeploymentTime, sinkDeploymentTime, idleness, prevValues,
+               stateExpirationTime, deploymentTime):
 
     response = getJobOverview(base_url, job_id)
     jsonTxt = json.loads(response.text)
 
     prevEdges = prevValues[0]
     prevNodes = prevValues[1]
+    waitTime = prevValues[2]
 
     vertices = jsonTxt.get("vertices", [])
 
@@ -43,9 +43,6 @@ def read_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
     deploymentTime_ms = deploymentTime * 1000
 
     # initialize variables
-    inputDuration = 0
-    inRate = 0
-    minusidleInRate = 0
     outputDuration = 0
     outRate = 0
     minusidleOutRate = 0
@@ -54,28 +51,32 @@ def read_stats(statsFile, base_url, job_id, parallelism, wSlide,wSize, approach,
     edges = int(sourceVertex.get("metrics", {}).get("write-records", 0))
 
     execDurationSink = int(sinkVertex.get("duration", 0))
-    nodes = int(sinkVertex.get("metrics", {}).get("write-records", 0))
+    nodes = int(sinkVertex.get("metrics", {}).get("read-records", 0))
+
+    # Save waitTime only the first time edges become > 0
+    if waitTime is None and edges > 0:
+        waitTime = execDurationSink
 
     if edges <= prevEdges and nodes <= prevNodes:
         return prevValues
 
     if nodes > prevNodes:
-        outputDuration = execDurationSink - sinkDeploymentTime - deploymentTime_ms         #time until sink status turns to running
+        outputDuration = execDurationSink - waitTime       #time until sink status turns to running
         outputDurationIdle = outputDuration - (stateExpirationTime * 1000); #subtract waittime and state expiration time
         if approach == "flinkWin":
-            outputDurationIdle = outputDurationIdle - idleness_ms
+            outputDurationIdle = outputDuration - idleness_ms
+        if outputDuration > 0:
+            outRate = edges / (outputDuration / 1000)
+            minusidleOutRate = edges / (outputDurationIdle / 1000)
 
-        outRate = edges / (outputDuration / 1000) if outputDuration > 0 else 0
-        minusidleOutRate = edges / (outputDurationIdle / 1000) if outputDurationIdle > 0 else 0
+        row = (f"{parallelism},{wSlide},{wSize},{approach},{expFrequency},"
+               f"{idleness},{edges},{outputDuration},"
+               f"{outRate},{nodes}")
 
-    row = (f"{parallelism},{wSlide},{wSize},{approach},{expFrequency},"
-           f"{idleness},{edges},{outputDuration},"
-           f"{outRate},{minusidleOutRate}")
-
-    statsFile.write(row + "\n")
+        statsFile.write(row + "\n")
 
 
-    return [edges,nodes]
+    return [edges,nodes, waitTime]
 
 
 

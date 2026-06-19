@@ -1,9 +1,9 @@
 parameters:
   "dateFormat": "yyyy-MM-dd'T'HH:mm:ss.SSS"
-  "nodeFilePath": "Synthetic_Layer_w263_e60_p100-nodes.txt"
-  "scenarioFilePath": "Synthetic_Layer_w263_e60_p100-edges.txt"
-  "outputFileName": "Synthetic_Layers"
+  "nodeFilePath": "bitcoinAlpha-nodes.txt"
+  "scenarioFilePath": "bitcoinAlpha-edges.txt"
+  "outputFileName": "bitcoinAlpha"
   "kafkaWrite": true
-  "topic": "synth"
-  "kafkaBootStrapServers": "localhost:9092"
-  "rateLimiter": 100000000.0
+  "topic": "testCC-inc-30p-5wsz-5wsl"
+  "kafkaBootStrapServers": "172.16.0.64:9092,172.16.0.81:9092"
+  "rateLimiter": 150000000.0

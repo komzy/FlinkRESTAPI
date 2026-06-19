@@ -1,5 +1,6 @@
 import subprocess, shlex, time
 from FlinkRESTAPIMethods import *
+import ruamel.yaml
 
 
 def createKafkaTopic(topic, partitions, bootstrap_servers, kafkaBinaryPath):
@@ -12,8 +13,8 @@ def createKafkaTopic(topic, partitions, bootstrap_servers, kafkaBinaryPath):
     createTopic = "ssh " + kafkaBinaryPath + baseCommand
 
     stdout_data, stderr_data = subprocess.Popen(createTopic, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-    print("STDOUT:", stdout_data.decode())
-    print("STDERR:", stderr_data.decode())
+    stdout_data.decode() and print("STDOUT:", stdout_data.decode())
+    stderr_data.decode() and print("STDERR:", stderr_data.decode())
     print(f"created topic: {topic}")
     time.sleep(3)
 
@@ -24,8 +25,8 @@ def deleteKafkaTopic(topic, bootstrap_servers, kafkaBinaryPath):
     deleteTopic = "ssh " + kafkaBinaryPath + baseCommand
 
     stdout_data, stderr_data = subprocess.Popen(deleteTopic, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()
-    print("STDOUT:", stdout_data.decode())
-    print("STDERR:", stderr_data.decode())
+    stdout_data.decode() and print("STDOUT:", stdout_data.decode())
+    stderr_data.decode() and print("STDERR:", stderr_data.decode())
     print(f"deleted topic: {topic}")
     time.sleep(3)
 
@@ -79,7 +80,6 @@ def load_kafka_data(topic,bootstrap_servers,generatorClusterPath, generatorConf_
 
     with open(generatorConf_home, 'r') as file:
         conf = yaml.load(file)
-    print("parameters_generator.yml loaded successfully")
 
     conf['parameters']['kafkaBootStrapServers'] = bootstrap_servers
     conf['parameters']['topic'] = topic
@@ -91,7 +91,9 @@ def load_kafka_data(topic,bootstrap_servers,generatorClusterPath, generatorConf_
         yaml.dump(conf, file)
 
     # copy conf to cluster
+
     subprocess.run(["scp", generatorConf_home, generatorConf_dest],check=True)
+    print("parameters_generator.yml uploaded successfully")
 
     host, full_path = generatorClusterPath.split(":", 1)
     remote_path, jarName = full_path.rsplit("/", 1)
@@ -113,8 +115,8 @@ def load_kafka_data(topic,bootstrap_servers,generatorClusterPath, generatorConf_
     result = subprocess.run(ssh_cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     # Print outputs
-    print("STDOUT:", result.stdout)
-    print("STDERR:", result.stderr)
+    result.stdout and print("STDOUT:", result.stdout)
+    result.stderr and print("STDERR:", result.stderr)
 
     if result.returncode != 0:
         raise RuntimeError(f"Command failed with exit code {result.returncode}")

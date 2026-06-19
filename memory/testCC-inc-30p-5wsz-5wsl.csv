@@ -1,0 +1,5 @@
+parallelism,wSlide,wSize,approach,expfrequency,outputDuration,TotalJVMHeap,AvgJVMHeap,sourceBackPressure,sinkBackPressure,sourceBusyTime,sinkBusyTime
+30,5,5,inc,0,0,7801405440,2600468480.0,0,0,0,0
+30,5,5,inc,0,8722,3472883712,1157627904.0,0,0,0,0
+30,5,5,inc,0,10069,4647288832,1549096277.3333333,0,0,0,0
+30,5,5,inc,0,11455,5016387584,1672129194.6666667,0,0,0,0

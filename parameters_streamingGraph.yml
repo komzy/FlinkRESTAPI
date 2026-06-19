@@ -1,0 +1,28 @@
+# This is a FlinkPregelMain Config File
+
+parameters:
+  kafka:
+    inputTopic: testCC-inc-30p-5wsz-5wsl
+    #inputTopic: bitcoinAlpha_P10
+    outputTopic: testCCoutput-inc-30p-5wsz-5wsl
+    latencyTopic: not #only for testing
+    kafkaBootStrapServers: 172.16.0.64:9092,172.16.0.81:9092
+    groupId: test_group
+    parallelism: 30
+
+  flink:
+    clusterMode: true
+    maxOutOfOderness: 0
+    idleness: 1  #should be greater or twice than windowSize
+    windowSize: 5
+    windowSlide: 5
+    windowOffset: 0
+    stateExpirationTimer: 21   #in seconds = 2 x windowSize + windowSlide
+    sourceOffset: latest   #"earliest" or "latest"
+
+  app:
+    dateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSS"
+    maximumSuperStep: 100
+    userParseClass: StringParseJson # class name.
+    query: CC   # CC: Connected Componenets, PR: Page Rank
+    approach: inc  #naive,　flinkWin, incremental

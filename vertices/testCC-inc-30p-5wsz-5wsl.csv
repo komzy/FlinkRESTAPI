@@ -1,0 +1,8 @@
+vertexName,read-records,write-records
+Source: messages Source -> Feedback Messages In,0,14006
+Source: Kafka Source,0,24186
+Map -> Input Edge Stream,24186,48372
+Process,48372,48372
+KeyedProcess,48372,9176
+Input-Feedback-Streams-Union,71554,64683
+CD -> (Map -> Feedback Messages Out: Writer -> Feedback Messages Out: Committer Map -> Map -> Output: Writer -> Output: Committer),64683,0
